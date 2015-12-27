@@ -45,6 +45,26 @@ function addClientAsync(x, y){
 }
 
 
+var adder = function(){
+    var subscribers=[];
+    return {
+        add: function(x, y){
+            console.log("[SP] processing ", x, " and ", y);
+            var result = x+y;
+            console.log("[SP] returning result");
+            subscribers.forEach(function(subscriber){
+                subscriber(result);
+                //subscribers.slice(0, 1);
+            });
+            return result;
+        },
+        onResult: function(resultCallback){
+            if(typeof resultCallback === 'function'){
+                subscribers.push(resultCallback);
+            }
+        }
+    };
+}
 
 //Promises
 function addUsingPromise(x, y){
