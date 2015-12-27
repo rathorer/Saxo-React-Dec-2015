@@ -17,24 +17,29 @@ function addClient(x,y){
 /* Async */
 
 //Provider
-function addAsync(x,y,onResult){
-    console.log("[SP] processing ", x , " and ", y);
+function addAsync(x, y, resultCallback, errorCallback){
+    console.log("[SP] processing ", x, " and ", y);
+    var result = x+y;
+    if(isNaN(result) && (typeof errorCallback === 'function')){
+            errorCallback();
+    }
     setTimeout(function(){
-        //if either x or y is (undefined | null | 0) throw error
-        var result = x + y;
-        console.log("[SP] returning result");
-        //return result;    
-        if (typeof onResult === 'function')
-            onResult(result);
-    },3000);
+            console.log("[SP] returning result");
+            //return result;
+        if(typeof resultCallback === 'function'){
+            resultCallback(result);
+        }
+        }, 5000);
     
 }
 
 //Consumer
 //modify the below to handle the error and display a meaniful message
-function addAsyncClient(x,y){
+function addClientAsync(x, y){
     console.log("[SC] triggering add");
-    addAsync(x,y, function(result){
-        console.log("[SC] result = ", result);    
+    var result = addAsync(x, y, function(result){
+        console.log("[SC] result = ", result);
+    }, function(){
+        console.log("There is a error.");
     });
 }
