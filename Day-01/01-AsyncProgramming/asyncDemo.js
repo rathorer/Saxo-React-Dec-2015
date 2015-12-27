@@ -43,3 +43,22 @@ function addClientAsync(x, y){
         console.log("There is a error.");
     });
 }
+
+
+
+//Promises
+function addUsingPromise(x, y){
+    console.log("[SP] processing ", x, " and ", y);
+    var promise = new Promise(function(resolve, reject){
+        var result = x+y;
+        
+        setTimeout(function(){
+            if(isNaN(result)){
+                reject("Not a valid result");
+            }
+            console.log("returning result");
+            resolve(result);
+        }, 5000);
+    });
+    return promise;
+}
