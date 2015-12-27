@@ -82,3 +82,28 @@ function addUsingPromise(x, y){
     });
     return promise;
 }
+
+
+
+function addUsingDefer(x, y){
+    console.log("[SP] processing ", x, " and ", y);
+    
+    var promise = new Promise(function(resolve, reject){
+        var result = x+y;
+        
+        setTimeout(function(){
+            if(isNaN(result)){
+                reject("Not a valid result");
+            }
+            console.log("returning result");
+            resolve(result);
+        }, 10000);
+    });
+    return new Promise(function(resolve, reject){
+        resolve(promise.then(function(res){
+            return res;
+        }).catch(function(err){
+            return err;
+        }));
+    });
+}
