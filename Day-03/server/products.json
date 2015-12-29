@@ -1,0 +1,54 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Pen",
+      "units": 10,
+      "cost": 50
+    },
+    {
+      "id": 2,
+      "name": "Pencil",
+      "units": 20,
+      "cost": 30
+    },
+    {
+      "id": 3,
+      "name": "Den",
+      "units": 30,
+      "cost": 10
+    },
+    {
+      "name": "Mobile",
+      "units": 3,
+      "cost": 5000,
+      "id": 4
+    },
+    {
+      "name": "Book",
+      "units": 30,
+      "cost": 1000,
+      "id": 5
+    },
+    {
+      "name": "Note Book",
+      "units": 30,
+      "cost": 1000,
+      "id": 6
+    },
+    {
+      "name": "Rahul",
+      "cost": 0,
+      "units": 0,
+      "value": 0,
+      "id": 7
+    },
+    {
+      "name": "Lappy",
+      "cost": 0,
+      "units": 0,
+      "value": 0,
+      "id": 8
+    }
+  ]
+}
